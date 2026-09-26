@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A&R Store - Quality everyday products delivered across Pakistan.">
+<title>A&R Store | Quality Products Delivered</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar">🚚 Fast delivery across Pakistan <span>•</span> 💵 Cash on Delivery</div>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="#home"><img src="assets/logo.jpg" alt="A&R Store"><span>A&R STORE</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a><a href="#products">Products</a><a href="#why-us">Why Us</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="cart-pill" href="#products">🛍 Shop Now</a>
+  </div>
+</header>
+
+<main id="home">
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">A&R STORE • ONLINE SHOP</span>
+      <h1>Useful products.<br><span>Easy ordering.</span></h1>
+      <p>Shop kitchen, wellness and everyday-use products with Cash on Delivery across Pakistan.</p>
+      <div class="hero-actions"><a class="btn btn-primary" href="#products">Shop Products</a><button class="btn btn-outline" id="heroOrder">Order Now</button></div>
+      <div class="trust-row"><div><b>8+</b><small>Products</small></div><div><b>COD</b><small>Cash on delivery</small></div><div><b>Pakistan</b><small>Delivery</small></div></div>
+    </div>
+    <div class="hero-art"><div class="hero-card"><img src="assets/silver-crest-blender.jpg" alt="Featured Silver Crest Blender"><div class="hero-card-label">FEATURED<br><strong>EVERYDAY ESSENTIALS</strong></div></div></div>
+  </div>
+</section>
+
+<section class="section" id="products">
+  <div class="container">
+    <div class="section-head">
+      <div><span class="eyebrow">OUR COLLECTION</span><h2>All Products</h2></div>
+      <div class="tools"><input id="searchInput" type="search" placeholder="Search products..."><select id="categoryFilter"><option value="all">All categories</option><option value="Kitchen">Kitchen</option><option value="Wellness">Wellness</option><option value="Beauty">Beauty</option><option value="Support">Support</option></select></div>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+    <p class="no-results" id="noResults">No product found.</p>
+  </div>
+</section>
+
+<section class="feature-band" id="why-us">
+  <div class="container feature-grid">
+    <div><span class="feature-icon">✓</span><div><h3>Quality Products</h3><p>Useful products selected for everyday shopping.</p></div></div>
+    <div><span class="feature-icon">🚚</span><div><h3>Home Delivery</h3><p>Provide your complete delivery address at checkout.</p></div></div>
+    <div><span class="feature-icon">💵</span><div><h3>Cash on Delivery</h3><p>Simple COD ordering for customers in Pakistan.</p></div></div>
+    <div><span class="feature-icon">🔒</span><div><h3>Simple Checkout</h3><p>No customer email is required.</p></div></div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="container cta"><div><span class="eyebrow">A&R STORE</span><h2>Ready to place an order?</h2><p>Select any product and enter your name, phone, address and country.</p></div><button class="btn btn-primary" id="ctaOrder">Start Order</button></div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div><div class="footer-brand">A&R STORE</div><p>Quality products for everyday life.<br>Delivered across Pakistan.</p></div>
+    <div><h4>Quick Links</h4><a href="#products">Products</a><a href="#why-us">Why Us</a><a href="#contact">Contact</a></div>
+    <div><h4>Ordering</h4><p>Cash on Delivery</p><p>Name • Phone • Address • Country</p></div>
+  </div>
+  <div class="copyright">© <span id="year"></span> A&R Store. All rights reserved.</div>
+</footer>
+
+<div class="modal" id="orderModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close="true"></div>
+  <div class="modal-card">
+    <button class="close-modal" id="closeModal" aria-label="Close">×</button>
+    <div class="modal-head"><span class="eyebrow">PLACE YOUR ORDER</span><h2>Order Details</h2><p id="modalPriceText">Select your product and quantity.</p></div>
+
+    <form id="orderForm" action="https://formsubmit.co/ajax/alphasasb58@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New Order - A&R Store">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="Order Total" id="hiddenTotal">
+      <input type="hidden" name="Order Time" id="orderTime">
+
+      <label>Product<select name="Product" id="productSelect" required></select></label>
+      <div class="form-row">
+        <label>Quantity<input type="number" name="Quantity" id="quantity" min="1" max="20" value="1" required></label>
+        <label>Customer Name<input type="text" name="Customer Name" id="customerName" placeholder="Your full name" required></label>
+      </div>
+      <div class="form-row">
+        <label>Phone Number<input type="tel" name="Phone Number" id="phone" placeholder="03XX XXXXXXX" pattern="[0-9+() -]{8,20}" required></label>
+        <label>Country<select name="Country" id="country" required><option value="Pakistan" selected>Pakistan</option><option>Afghanistan</option><option>United Arab Emirates</option><option>Saudi Arabia</option><option>Other</option></select></label>
+      </div>
+      <label>Delivery Address<textarea name="Delivery Address" id="address" rows="3" placeholder="House, street, area, city" required></textarea></label>
+      <label>Additional Note <span>(optional)</span><textarea name="Note" id="note" rows="2" placeholder="Color, size, or any other note"></textarea></label>
+
+      <div class="total-box"><span>Total</span><strong id="totalPrice">Rs. 0</strong></div>
+      <button class="btn btn-primary full" type="submit" id="submitOrder">Confirm Order</button>
+      <p class="form-status" id="formStatus"></p>
+      <small class="form-note">Your order details are sent to A&R Store for processing. No customer email is requested.</small>
+    </form>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
